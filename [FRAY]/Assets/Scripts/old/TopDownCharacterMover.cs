@@ -38,6 +38,10 @@ public class TopDownCharacterMover : MonoBehaviour
     [SerializeField]
     private float maxSpeed;
 
+    [SerializeField]
+    private TrailRenderer tr;
+
+    
     private void Awake()
     {
         _input = GetComponent<InputHandler>();
@@ -75,6 +79,9 @@ public class TopDownCharacterMover : MonoBehaviour
         {
             rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
         }
+
+
+        
 
     }
 
@@ -125,7 +132,7 @@ public class TopDownCharacterMover : MonoBehaviour
         }
     }
 
-
+ 
 
 
 

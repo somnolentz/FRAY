@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
     public float horizInput;
     public float vertInput;
 
+    public ParticleSystem dust;
+
+
     [SerializeField]
     private LayerMask WhatIsGround;
 
@@ -17,6 +20,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private float Time;
+
+    public bool switchtoTwoDMode;
 
     // Start is called before the first frame update
     void Start()
@@ -29,11 +34,23 @@ public class PlayerController : MonoBehaviour
     {
         horizInput = Input.GetAxis("Horizontal");
         vertInput = Input.GetAxis("Vertical");
+        SurfaceAlignment();
+    }
 
+    private void FixedUpdate()
+    {
         rb.AddForce(new Vector3(1, 0, 0) * speed * horizInput);
         rb.AddForce(new Vector3(0, 0, 1) * speed * vertInput);
-        SurfaceAlignment();
-     
+
+        Vector3 movementDirection = new Vector3(horizInput, 0, vertInput);
+        //transform.Translate(movementDirection * speed, Space.World);
+        if (movementDirection != Vector3.zero)
+        {
+            transform.forward = movementDirection;
+            CreateDust();
+        }
+        
+       
     }
 
     private void SurfaceAlignment()
@@ -49,5 +66,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+    void CreateDust()
+    {
+        dust.Play();
+    }
 
 }
