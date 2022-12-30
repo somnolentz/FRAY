@@ -10,8 +10,8 @@ public class Jump : MonoBehaviour
     private Rigidbody rb = null;
 
     public bool onGround = true;
-    
-   
+    [SerializeField]
+    private Animator anim;
 
     private void Start()
     {
@@ -27,7 +27,9 @@ public class Jump : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) == true && onGround == true)
         {
             onGround = false;
+            anim.SetBool("isJumping", true);
             rb.AddForce(Vector3.up * Jumpforce, ForceMode.VelocityChange);
+
         }
 
     }
@@ -38,6 +40,7 @@ public class Jump : MonoBehaviour
         if (collider.tag == "ground")
         {
             onGround = true;
+            anim.SetBool("isJumping", false);
         }
     }
     private void OnTriggerExit(Collider collider)
@@ -45,6 +48,7 @@ public class Jump : MonoBehaviour
         if (collider.tag == "ground")
         {
             onGround = false;
+           
         }
     }
 
@@ -55,6 +59,7 @@ public class Jump : MonoBehaviour
         if (rb.velocity.y < 0)
         {
             rb.velocity += Vector3.up * Physics.gravity.y * Fallmultiplier * Time.deltaTime;
+            
         }
     }
 

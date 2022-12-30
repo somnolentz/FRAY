@@ -23,10 +23,13 @@ public class PlayerController : MonoBehaviour
 
     public bool switchtoTwoDMode;
 
+   
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        rb.constraints = RigidbodyConstraints.None;
+        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
     }
 
     // Update is called once per frame
@@ -34,7 +37,7 @@ public class PlayerController : MonoBehaviour
     {
         horizInput = Input.GetAxis("Horizontal");
         vertInput = Input.GetAxis("Vertical");
-        SurfaceAlignment();
+        //SurfaceAlignment();
     }
 
     private void FixedUpdate()
@@ -49,8 +52,8 @@ public class PlayerController : MonoBehaviour
             transform.forward = movementDirection;
             CreateDust();
         }
+
         
-       
     }
 
     private void SurfaceAlignment()

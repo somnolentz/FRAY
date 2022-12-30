@@ -22,12 +22,15 @@ public class TwoDPlayerCont : MonoBehaviour
     [SerializeField]
     private float Time;
 
-    public Transform facing; 
+    public Transform facing;
+
+    public Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        rb.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationZ;
     }
 
     // Update is called once per frame
@@ -35,9 +38,10 @@ public class TwoDPlayerCont : MonoBehaviour
     {
         //SurfaceAlignment();
         horizInput = Input.GetAxis("Horizontal");
-        Vector3 pos = transform.position;
-        pos.z = 0;
-        transform.position = pos;
+        anim.SetFloat("speed", Mathf.Abs(horizInput));
+        //Vector3 pos = transform.position;
+        //pos.z = 0;
+        //transform.position = pos;
         
     }
 
@@ -50,18 +54,19 @@ public class TwoDPlayerCont : MonoBehaviour
         {
             Debug.Log("facing right");
             transform.localRotation = Quaternion.Euler(0, 0, 0);
-
-
+            anim.SetBool("FacingRight", true);
+           
 
         }
         if (Input.GetAxisRaw("Horizontal") < 0)
         {
             Debug.Log("facing left");
             transform.localRotation = Quaternion.Euler(0, 180, 0);
+            anim.SetBool("FacingRight", false);
 
 
         }
-
+       ;
     }
 
     private void SurfaceAlignment()

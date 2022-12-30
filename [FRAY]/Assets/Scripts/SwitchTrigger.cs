@@ -7,32 +7,10 @@ public class SwitchTrigger : MonoBehaviour
     private bool TwoDcam = true;
     public bool TwoDTriggerSwitch;
     public bool ThreeDTriggerSwitch;
+
+    [SerializeField]
     private Animator anim;
-  
-
-    //private void start()
-    //{
-    //    anim = GetComponent<Animator>();
-
-    //}
-
-
-    //private void switchCam()
-    //{
-    //    if (TwoDcam)
-    //    {
-    //        anim.Play("3D cam");
-    //    }
-    //    else
-    //    {
-    //        anim.Play("2D cam");
-    //    }
-    //    TwoDcam = !TwoDcam;
-
-    //}
-
-
-
+ 
     private void OnTriggerEnter(Collider collider)
     {
 
@@ -46,7 +24,9 @@ public class SwitchTrigger : MonoBehaviour
 
             GetComponent<TwoDPlayerCont>().enabled = true;
             GetComponent<TwoDDash>().enabled = true;
-           
+            anim.SetBool("is3D", false);
+            GetComponent<SpriteDirectionalController>().enabled = false;
+
 
         }
         if (collider.tag == "3DTrigger")
@@ -59,7 +39,8 @@ public class SwitchTrigger : MonoBehaviour
 
             GetComponent<PlayerController>().enabled = true;
             GetComponent<Dash>().enabled = true;
-            
+            anim.SetBool("is3D", true);
+            GetComponent<SpriteDirectionalController>().enabled = true;
 
         }
         //if (TwoDTriggerSwitch || ThreeDTriggerSwitch == true)
