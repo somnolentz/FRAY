@@ -15,6 +15,19 @@ public class SpriteDirectionalController : MonoBehaviour
     [SerializeField]
     SpriteRenderer spriteRenderer;
 
+    private float animspeed;
+    private void Update()
+    {
+        //animspeed = animator.GetFloat("speed");
+        //if (animspeed > 0.01)
+        //{
+        //    animator.SetBool("isIdle", false);
+        //}
+        //else
+        //{
+        //    animator.SetBool("isIdle",false);
+        //}
+    }
     private void LateUpdate()
     {
         Vector3 camForwardVector = new Vector3(Camera.main.transform.forward.x, 0f, Camera.main.transform.forward.z);
@@ -24,37 +37,55 @@ public class SpriteDirectionalController : MonoBehaviour
         Vector2 animationDirection = new Vector2(0, -1f);
         float angle = Mathf.Abs(signedAngle);
 
+       
 
         if (angle < backAngle)
         {
+            //back idle
             animationDirection = new Vector2(0f, -1f);
+            
+
+            //if (animspeed > 0.01)
+            //{
+            //    animator.Play("player_moveback");
+            //}
         }
         else if (angle < sideAngle)
         {
-            //right
-            //animationDirection = new Vector2(1f, 0f);
-
+            
             if (signedAngle < 0)
             {
+                //right idle
                 animationDirection = new Vector2(1f, 0f);
+
+                //if (animspeed > 0.01)
+                //{
+                //    animator.Play("player_moveright");
+                //}
             }
             else
             {
+                //left idle 
                 animationDirection = new Vector2(-1f, 0f);
+
+                //if (animspeed > 0.01)
+                //{
+                //    Debug.Log("play left run");
+                //    animator.Play("player_moveleft");
+                //}
             }
-
-
-
-
 
         }
         else
         {
-            //front anim
+            //front anim idle
             animationDirection = new Vector2(0f, 1f);
+
+            ////if (animspeed > 0.01)
+            ////{
+            ////    animator.Play("player_movefront");
+            ////}
         }
-
-
 
         animator.SetFloat("moveX", animationDirection.x);
 

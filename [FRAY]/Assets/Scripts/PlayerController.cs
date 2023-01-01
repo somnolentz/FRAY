@@ -23,6 +23,10 @@ public class PlayerController : MonoBehaviour
 
     public bool switchtoTwoDMode;
 
+    public WallClimbing wcscript;
+
+    [SerializeField]
+    private Animator anim;
    
     // Start is called before the first frame update
     void Start()
@@ -42,6 +46,9 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (wcscript.exitingWall) return;
+
+
         rb.AddForce(new Vector3(1, 0, 0) * speed * horizInput);
         rb.AddForce(new Vector3(0, 0, 1) * speed * vertInput);
 
@@ -49,11 +56,12 @@ public class PlayerController : MonoBehaviour
         //transform.Translate(movementDirection * speed, Space.World);
         if (movementDirection != Vector3.zero)
         {
+            anim.SetBool("isIdle", false);
             transform.forward = movementDirection;
             CreateDust();
         }
+        anim.SetBool("isIdle", true);
 
-        
     }
 
     private void SurfaceAlignment()

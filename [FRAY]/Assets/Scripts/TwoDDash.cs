@@ -18,7 +18,8 @@ public class TwoDDash : MonoBehaviour
     public float dashingCooldown = 1f;
     public Rigidbody rb;
 
-
+    [SerializeField]
+    Animator anim;
 
 
 
@@ -65,15 +66,14 @@ public class TwoDDash : MonoBehaviour
         isDashing = true;
 
         tr.emitting = true;
+        //anim.SetBool("isDashing", true);
         EnableUICam();
         rb.velocity += transform.right * dashingPower * Time.deltaTime;
-        //rb.AddForce(transform.forward * dashingPower, 0f);
-        // rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
-        //rb.velocity += transform.forward * Time.deltaTime * dashingPower;
         yield return new WaitForSeconds(dashingTime);
+        anim.SetBool("isDashing", false);
         tr.emitting = false;
         DisableUICam();
-        isDashing = false;
+        //isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
 

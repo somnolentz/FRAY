@@ -15,7 +15,9 @@ public class Jump : MonoBehaviour
 
     private void Start()
     {
+
         rb = this.GetComponent<Rigidbody>();
+        onGround = true;
     }
 
 
