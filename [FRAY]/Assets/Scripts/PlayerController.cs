@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
     {
         horizInput = Input.GetAxis("Horizontal");
         vertInput = Input.GetAxis("Vertical");
+        anim.SetFloat("speed", Mathf.Abs(horizInput));
         //SurfaceAlignment();
         if (rb.velocity.magnitude > ThreeDMaxSpeed)
         {
@@ -68,20 +69,48 @@ public class PlayerController : MonoBehaviour
         }
         anim.SetBool("isIdle", true);
 
-    }
 
-    private void SurfaceAlignment()
-    {
 
-        Ray ray = new Ray(transform.position, -transform.up);
-        RaycastHit info = new RaycastHit();
-        Quaternion RotationRef = Quaternion.Euler(0, 0, 0);
-        if (Physics.Raycast(ray, out info, WhatIsGround))
+
+        if (Input.GetAxisRaw("Horizontal") > 0)
         {
-            RotationRef = Quaternion.Lerp(transform.rotation, Quaternion.FromToRotation(Vector3.up, info.normal), animCurve.Evaluate(Time));
-            transform.rotation = Quaternion.Euler(RotationRef.eulerAngles.x, transform.eulerAngles.y, RotationRef.eulerAngles.z);
+            
+            anim.SetBool("FacingRight", true);
+            anim.SetBool("FacingLeft", false);
+
+          
+
         }
+        if (Input.GetAxisRaw("Horizontal") < 0)
+        {
+            
+            anim.SetBool("FacingRight", false);
+            anim.SetBool("FacingLeft", true);
+
+
+
+        }
+
+
+
+
+
+
+
     }
+
+    //private void SurfaceAlignment()
+    //{
+
+    //    Ray ray = new Ray(transform.position, -transform.up);
+    //    RaycastHit info = new RaycastHit();
+    //    Quaternion RotationRef = Quaternion.Euler(0, 0, 0);
+    //    if (Physics.Raycast(ray, out info, WhatIsGround))
+    //    {
+    //        RotationRef = Quaternion.Lerp(transform.rotation, Quaternion.FromToRotation(Vector3.up, info.normal), animCurve.Evaluate(Time));
+    //        transform.rotation = Quaternion.Euler(RotationRef.eulerAngles.x, transform.eulerAngles.y, RotationRef.eulerAngles.z);
+    //    }
+    //}
 
 
     void CreateDust()

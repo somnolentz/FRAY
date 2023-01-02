@@ -10,7 +10,14 @@ public class SwitchTrigger : MonoBehaviour
 
     [SerializeField]
     private Animator anim;
- 
+
+    [SerializeField]
+    private SpriteDirectionalController sdc;
+
+    private void Start()
+    {
+       
+    }
     private void OnTriggerEnter(Collider collider)
     {
 
@@ -26,7 +33,7 @@ public class SwitchTrigger : MonoBehaviour
             GetComponent<TwoDDash>().enabled = true;
             anim.SetBool("is3D", false);
 
-            GetComponent<SpriteDirectionalController>().enabled = false;
+            
 
             GetComponent<WallClimbing>().enabled = false;
             GetComponent<TwoDWallClimb>().enabled = true;
@@ -44,7 +51,9 @@ public class SwitchTrigger : MonoBehaviour
             GetComponent<PlayerController>().enabled = true;
             GetComponent<Dash>().enabled = true;
             anim.SetBool("is3D", true);
+
             GetComponent<SpriteDirectionalController>().enabled = true;
+
             GetComponent<WallClimbing>().enabled = true;
             GetComponent<TwoDWallClimb>().enabled = false;
 
