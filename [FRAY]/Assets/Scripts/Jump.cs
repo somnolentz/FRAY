@@ -24,7 +24,7 @@ public class Jump : MonoBehaviour
 
     private void Update()
     {
-        //this.transform.Translate(Vector3.right * Input.GetAxis("Horizontal") * Movespeed * Time.deltaTime);
+        
 
         if (Input.GetKeyDown(KeyCode.Space) == true && onGround == true)
         {
@@ -58,7 +58,7 @@ public class Jump : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (rb.velocity.y < 0)
+        if (rb.velocity.y < 0 && onGround == false)
         {
             rb.velocity += Vector3.up * Physics.gravity.y * Fallmultiplier * Time.deltaTime;
             

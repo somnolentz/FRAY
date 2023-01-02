@@ -26,22 +26,27 @@ public class TwoDPlayerCont : MonoBehaviour
 
     public Animator anim;
 
+    public float TwoDMaxSpeed;
+
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationZ;
+        rb.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationX;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //SurfaceAlignment();
+        
         horizInput = Input.GetAxis("Horizontal");
         anim.SetFloat("speed", Mathf.Abs(horizInput));
-        //Vector3 pos = transform.position;
-        //pos.z = 0;
-        //transform.position = pos;
+
+        if (rb.velocity.magnitude > TwoDMaxSpeed)
+        {
+            rb.velocity = Vector3.ClampMagnitude(rb.velocity, TwoDMaxSpeed);
+        }
         
     }
 
@@ -52,7 +57,7 @@ public class TwoDPlayerCont : MonoBehaviour
 
         if (Input.GetAxisRaw("Horizontal") > 0)
         {
-            Debug.Log("facing right");
+            //Debug.Log("facing right");
             transform.localRotation = Quaternion.Euler(0, 0, 0);
             anim.SetBool("FacingRight", true);
            
@@ -60,7 +65,7 @@ public class TwoDPlayerCont : MonoBehaviour
         }
         if (Input.GetAxisRaw("Horizontal") < 0)
         {
-            Debug.Log("facing left");
+            //Debug.Log("facing left");
             transform.localRotation = Quaternion.Euler(0, 180, 0);
             anim.SetBool("FacingRight", false);
 
@@ -69,18 +74,7 @@ public class TwoDPlayerCont : MonoBehaviour
        ;
     }
 
-    private void SurfaceAlignment()
-    {
-
-        Ray ray = new Ray(transform.position, -transform.up);
-        RaycastHit info = new RaycastHit();
-        Quaternion RotationRef = Quaternion.Euler(0, 0, 0);
-        if (Physics.Raycast(ray, out info, WhatIsGround))
-        {
-            RotationRef = Quaternion.Lerp(transform.rotation, Quaternion.FromToRotation(Vector3.up, info.normal), animCurve.Evaluate(Time));
-            transform.rotation = Quaternion.Euler(RotationRef.eulerAngles.x, transform.eulerAngles.y, RotationRef.eulerAngles.z);
-        }
-    }
+    
 
 
     void CreateDust()

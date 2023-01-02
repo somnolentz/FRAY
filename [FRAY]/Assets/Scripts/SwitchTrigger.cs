@@ -25,7 +25,11 @@ public class SwitchTrigger : MonoBehaviour
             GetComponent<TwoDPlayerCont>().enabled = true;
             GetComponent<TwoDDash>().enabled = true;
             anim.SetBool("is3D", false);
+
             GetComponent<SpriteDirectionalController>().enabled = false;
+
+            GetComponent<WallClimbing>().enabled = false;
+            GetComponent<TwoDWallClimb>().enabled = true;
 
 
         }
@@ -41,14 +45,11 @@ public class SwitchTrigger : MonoBehaviour
             GetComponent<Dash>().enabled = true;
             anim.SetBool("is3D", true);
             GetComponent<SpriteDirectionalController>().enabled = true;
+            GetComponent<WallClimbing>().enabled = true;
+            GetComponent<TwoDWallClimb>().enabled = false;
 
         }
-        //if (TwoDTriggerSwitch || ThreeDTriggerSwitch == true)
-        //{
-        //    Debug.Log("camswitch");
-        //    switchCam();
-        //}
-        
+     
 
 
 

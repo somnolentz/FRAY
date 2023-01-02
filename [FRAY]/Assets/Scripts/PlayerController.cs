@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private Animator anim;
+
+    public float ThreeDMaxSpeed;
    
     // Start is called before the first frame update
     void Start()
@@ -42,6 +44,10 @@ public class PlayerController : MonoBehaviour
         horizInput = Input.GetAxis("Horizontal");
         vertInput = Input.GetAxis("Vertical");
         //SurfaceAlignment();
+        if (rb.velocity.magnitude > ThreeDMaxSpeed)
+        {
+            rb.velocity = Vector3.ClampMagnitude(rb.velocity, ThreeDMaxSpeed);
+        }
     }
 
     private void FixedUpdate()

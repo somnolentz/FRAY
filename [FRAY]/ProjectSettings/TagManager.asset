@@ -7,6 +7,7 @@ TagManager:
   - ground
   - 2DTrigger
   - 3DTrigger
+  - wall
   layers:
   - Default
   - TransparentFX
