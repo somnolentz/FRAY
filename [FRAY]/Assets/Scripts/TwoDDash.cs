@@ -39,9 +39,10 @@ public class TwoDDash : MonoBehaviour
             StartCoroutine(StartDash());
             CreateDust();
             
-            
-            
+          
+
         }
+        animateDash();
     }
     
     void CreateDust()
@@ -66,18 +67,32 @@ public class TwoDDash : MonoBehaviour
         isDashing = true;
 
         tr.emitting = true;
-        //anim.SetBool("isDashing", true);
+        
         EnableUICam();
         rb.velocity += transform.right * dashingPower * Time.deltaTime;
         yield return new WaitForSeconds(dashingTime);
         anim.SetBool("isDashing", false);
         tr.emitting = false;
         DisableUICam();
-        //isDashing = false;
+        isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
 
 
 
     }
+
+    private void animateDash()
+    {
+        if (isDashing == true)
+        {
+            anim.SetBool("isDashing", true);
+        }
+
+        if (isDashing == false)
+        {
+            anim.SetBool("isDashing", false);
+        }
+    }
+
 }

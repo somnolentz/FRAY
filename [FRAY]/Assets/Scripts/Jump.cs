@@ -30,6 +30,7 @@ public class Jump : MonoBehaviour
         {
             onGround = false;
             anim.SetBool("isJumping", true);
+            anim.SetBool("OnGround", false);
             rb.AddForce(Vector3.up * Jumpforce, ForceMode.VelocityChange);
 
         }
@@ -43,6 +44,7 @@ public class Jump : MonoBehaviour
         {
             onGround = true;
             anim.SetBool("isJumping", false);
+            anim.SetBool("OnGround", true);
         }
     }
     private void OnTriggerExit(Collider collider)
@@ -50,7 +52,8 @@ public class Jump : MonoBehaviour
         if (collider.tag == "ground")
         {
             onGround = false;
-           
+            anim.SetBool("isJumping", true);
+
         }
     }
 

@@ -60,7 +60,8 @@ public class TwoDPlayerCont : MonoBehaviour
             //Debug.Log("facing right");
             transform.localRotation = Quaternion.Euler(0, 0, 0);
             anim.SetBool("FacingRight", true);
-           
+            anim.SetBool("FacingLeft", false);
+
 
         }
         if (Input.GetAxisRaw("Horizontal") < 0)
@@ -68,6 +69,7 @@ public class TwoDPlayerCont : MonoBehaviour
             //Debug.Log("facing left");
             transform.localRotation = Quaternion.Euler(0, 180, 0);
             anim.SetBool("FacingRight", false);
+            anim.SetBool("FacingLeft", true); 
 
 
         }

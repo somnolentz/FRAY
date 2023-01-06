@@ -15,7 +15,7 @@ public class Dash : MonoBehaviour
     public float dashingTime = 0.2f;
     public float dashingCooldown = 1f;
     public Rigidbody rb;
-
+    public Animator anim;
     
 
     // Update is called once per frame
@@ -28,6 +28,7 @@ public class Dash : MonoBehaviour
             StartCoroutine(StartDash());
             CreateDust();
         }
+        animateDash();
     }
     void CreateDust()
     {
@@ -38,12 +39,7 @@ public class Dash : MonoBehaviour
         canDash = false;
         isDashing = true;
         tr.emitting = true;
-
-        //rb.AddForce(transform.forward * dashingPower, 0f);
-        //transform.position += Vector3.forward * Time.deltaTime * dashingPower;
-        //rb.AddForce(Vector3.forward * dashingPower, 0f);
         rb.AddRelativeForce(Vector3.forward * dashingPower, 0f);
-
         yield return new WaitForSeconds(dashingTime);
         tr.emitting = false;
         isDashing = false;
@@ -54,6 +50,18 @@ public class Dash : MonoBehaviour
 
     }
 
+    private void animateDash()
+    {
+        if (isDashing == true)
+        {
+            anim.SetBool("isDashing", true);
+        }
+
+        if (isDashing == false)
+        {
+            anim.SetBool("isDashing", false);
+        }
+    }
 
 
 

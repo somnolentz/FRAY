@@ -9,6 +9,7 @@ public class WallClimbing : MonoBehaviour
     public Rigidbody rb;
     public LayerMask whatIsWall;
     public Jump jmp;
+    public Animator anim;
     [Header("Climbing")]
     public float climbSpeed;
     public float maxClimbTIme;
@@ -39,6 +40,7 @@ public class WallClimbing : MonoBehaviour
     public float exitWallTime;
     private float exitWallTimer;
 
+    
     private void StateMachine()
     {
         //climbing 1
@@ -54,15 +56,17 @@ public class WallClimbing : MonoBehaviour
         else if (exitingWall)
         {
             if (climbing) StopClimbing();
-
+            anim.SetBool("wallSlide", false);
             if (exitWallTimer > 0) exitWallTimer -= Time.deltaTime;
             if (exitWallTimer < 0) exitingWall = false;
+
 
         }
         //none
         else
         {
             if (climbing) StopClimbing();
+            anim.SetBool("wallSlide", false);
         }
         if (wallFront && Input.GetKey(jumpKey) && climbJumpsLeft > 0) ClimbJump();
     }
@@ -94,6 +98,7 @@ public class WallClimbing : MonoBehaviour
 
         lastwall = frontWallHit.transform;
         lastWallNormal = frontWallHit.normal;
+        anim.SetBool("wallSlide", true);
     }
     private void ClimbingMovement()
     {
@@ -103,6 +108,7 @@ public class WallClimbing : MonoBehaviour
     private void StopClimbing()
     {
         climbing = false;
+        anim.SetBool("wallSlide", false);
     }
     public void ClimbJump()
     {
@@ -111,6 +117,7 @@ public class WallClimbing : MonoBehaviour
         Vector3 forceToApply = transform.up * climbJumpUpForce + frontWallHit.normal * climbJumpBackForce;
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
         rb.AddForce(forceToApply, ForceMode.Impulse);
+        anim.SetBool("wallSlide", true);
 
         climbJumpsLeft--;
     }
