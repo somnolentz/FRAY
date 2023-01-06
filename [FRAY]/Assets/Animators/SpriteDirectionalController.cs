@@ -18,15 +18,7 @@ public class SpriteDirectionalController : MonoBehaviour
     private float animspeed;
     private void Update()
     {
-        //animspeed = animator.GetFloat("speed");
-        //if (animspeed > 0.01)
-        //{
-        //    animator.SetBool("isIdle", false);
-        //}
-        //else
-        //{
-        //    animator.SetBool("isIdle",false);
-        //}
+    
     }
     private void LateUpdate()
     {
@@ -37,18 +29,14 @@ public class SpriteDirectionalController : MonoBehaviour
         Vector2 animationDirection = new Vector2(0, -1f);
         float angle = Mathf.Abs(signedAngle);
 
-       
+
 
         if (angle < backAngle)
         {
             //back idle
-            animationDirection = new Vector2(0f, -1f);
-            
+            animationDirection = new Vector2(0f, -1f); 
+           
 
-            //if (animspeed > 0.01)
-            //{
-            //    animator.Play("player_moveback");
-            //}
         }
         else if (angle < sideAngle)
         {
@@ -58,21 +46,14 @@ public class SpriteDirectionalController : MonoBehaviour
                 //right idle
                 animationDirection = new Vector2(1f, 0f);
 
-                //if (animspeed > 0.01)
-                //{
-                //    animator.Play("player_moveright");
-                //}
+                
             }
             else
             {
                 //left idle 
                 animationDirection = new Vector2(-1f, 0f);
 
-                //if (animspeed > 0.01)
-                //{
-                //    Debug.Log("play left run");
-                //    animator.Play("player_moveleft");
-                //}
+                
             }
 
         }
@@ -81,15 +62,16 @@ public class SpriteDirectionalController : MonoBehaviour
             //front anim idle
             animationDirection = new Vector2(0f, 1f);
 
-            ////if (animspeed > 0.01)
-            ////{
-            ////    animator.Play("player_movefront");
-            ////}
+          
         }
+
 
         animator.SetFloat("moveX", animationDirection.x);
 
         animator.SetFloat("moveY", animationDirection.y);
+
+        //animator.SetFloat("moveY", animationDirection.y, 1f, Time.deltaTime * 2f);
+        //animator.SetFloat("moveX", animationDirection.y, 1f, Time.deltaTime * 2f);
 
     }
 }
