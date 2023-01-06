@@ -91,6 +91,24 @@ public class PlayerController : MonoBehaviour
 
         }
 
+        if (Input.GetAxisRaw("Vertical") > 0)
+        {
+
+            anim.SetBool("FacingBack", true);
+            anim.SetBool("FacingUp", false);
+
+
+
+        }
+        if (Input.GetAxisRaw("Vertical") < 0)
+        {
+
+            anim.SetBool("FacingFacing", false);
+            anim.SetBool("FacingLeft", true);
+
+
+
+        }
 
 
 
