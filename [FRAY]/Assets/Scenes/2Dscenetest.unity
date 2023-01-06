@@ -1473,11 +1473,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< Updated upstream
   m_Name: pb_Mesh26056
-=======
-  m_Name: pb_Mesh40450
->>>>>>> Stashed changes
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2554,11 +2550,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< Updated upstream
   m_Name: pb_Mesh26176
-=======
-  m_Name: pb_Mesh40570
->>>>>>> Stashed changes
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2727,11 +2719,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< Updated upstream
   m_Name: pb_Mesh26318
-=======
-  m_Name: pb_Mesh40712
->>>>>>> Stashed changes
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2967,13 +2955,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1063996502}
-<<<<<<< Updated upstream
   m_LocalRotation: {x: 0, y: 0, z: 0.01745245, w: 0.99984777}
   m_LocalPosition: {x: -193.6, y: 33.24, z: -1060.2}
-=======
-  m_LocalRotation: {x: 0.049766276, y: 0.004227141, z: -0.00021063192, w: 0.99875194}
-  m_LocalPosition: {x: -192.6, y: 31.98, z: -1055.2}
->>>>>>> Stashed changes
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3207,11 +3190,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< Updated upstream
   m_Name: pb_Mesh26282
-=======
-  m_Name: pb_Mesh40676
->>>>>>> Stashed changes
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13031,10 +13010,6 @@ Transform:
 <<<<<<< Updated upstream
   m_LocalRotation: {x: 0.04976599, y: 0.005433567, z: -0.0002707463, w: 0.9987461}
   m_LocalPosition: {x: -0.011935778, y: -0.074283674, z: -0.83074486}
-=======
-  m_LocalRotation: {x: 0.049766276, y: 0.004227141, z: -0.00021063192, w: 0.99875194}
-  m_LocalPosition: {x: -0.011935778, y: 0.07725495, z: -0.83074486}
->>>>>>> Stashed changes
   m_LocalScale: {x: 0.059674494, y: 0.07362781, z: 0.0491559}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13261,11 +13236,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< Updated upstream
   m_Name: pb_Mesh26162
-=======
-  m_Name: pb_Mesh40556
->>>>>>> Stashed changes
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13797,11 +13768,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< Updated upstream
   m_Name: pb_Mesh26070
-=======
-  m_Name: pb_Mesh40464
->>>>>>> Stashed changes
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
