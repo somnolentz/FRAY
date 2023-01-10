@@ -47,7 +47,8 @@ public class TwoDPlayerCont : MonoBehaviour
         {
             rb.velocity = Vector3.ClampMagnitude(rb.velocity, TwoDMaxSpeed);
         }
-        
+        SurfaceAlignment();
+
     }
 
     private void FixedUpdate()
@@ -73,10 +74,22 @@ public class TwoDPlayerCont : MonoBehaviour
 
 
         }
-       ;
+        
     }
 
-    
+
+    private void SurfaceAlignment()
+   {
+
+       Ray ray = new Ray(transform.position, -transform.up);
+       RaycastHit info = new RaycastHit();
+       Quaternion RotationRef = Quaternion.Euler(0, 0, 0);
+       if (Physics.Raycast(ray, out info, WhatIsGround))
+       {
+          RotationRef = Quaternion.Lerp(transform.rotation, Quaternion.FromToRotation(Vector3.up, info.normal), animCurve.Evaluate(Time));
+           transform.rotation = Quaternion.Euler(RotationRef.eulerAngles.x, transform.eulerAngles.y, RotationRef.eulerAngles.z);
+        }
+    }
 
 
     void CreateDust()
