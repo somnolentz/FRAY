@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.123782784, g: 0.1270273, b: 0.07112198, a: 1}
+  m_IndirectSpecularColor: {r: 0.008017309, g: 0.010009769, b: 0.00898208, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -270,6 +270,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   time: 0
   maxSpeed: 30
+  tr: {fileID: 0}
 --- !u!4 &331756471 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8918271355706845772, guid: 74d62cbe765bb884e9f0ba83feadbd10, type: 3}
@@ -383,7 +384,7 @@ GameObject:
   - component: {fileID: 760915362}
   - component: {fileID: 760915361}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: stars
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
