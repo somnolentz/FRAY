@@ -21,7 +21,11 @@ public class Dash : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-   
+        if (DialogueManager.GetInstance().dialogueIsPlaying)
+        {
+            return;
+        }
+
         if (Input.GetKey(KeyCode.LeftShift) && canDash)
         {
             Debug.Log("dashing?");
@@ -45,6 +49,7 @@ public class Dash : MonoBehaviour
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
+        
 
 
 

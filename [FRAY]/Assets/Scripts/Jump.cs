@@ -24,10 +24,15 @@ public class Jump : MonoBehaviour
 
     private void Update()
     {
-        
+       /* if (DialogueManager.GetInstance().dialogueIsPlaying == true)
+        {
+            return;
+        }
+       */
 
         if (Input.GetKeyDown(KeyCode.Space) == true && onGround == true)
         {
+            Debug.Log("registering spacebar");
             onGround = false;
             anim.SetBool("isJumping", true);
             anim.SetBool("OnGround", false);
@@ -45,6 +50,7 @@ public class Jump : MonoBehaviour
             onGround = true;
             anim.SetBool("isJumping", false);
             anim.SetBool("OnGround", true);
+            Debug.Log("is on the ground");
         }
     }
     private void OnTriggerExit(Collider collider)
@@ -53,6 +59,7 @@ public class Jump : MonoBehaviour
         {
             onGround = false;
             anim.SetBool("isJumping", true);
+
 
         }
     }

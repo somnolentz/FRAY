@@ -1,0 +1,1 @@
+VAR firstlevelaccepted = false
