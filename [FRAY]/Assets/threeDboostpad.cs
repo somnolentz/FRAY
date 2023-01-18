@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoostPad : MonoBehaviour
+public class threeDboostpad : MonoBehaviour
 {
     public float speedBoost;
 
@@ -16,21 +16,22 @@ public class BoostPad : MonoBehaviour
 
     private void Start()
     {
-        
-        
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (playerInSpeedPos == true && sw.TwoDTriggerSwitch == true)
+        if (playerInSpeedPos == true)
         {
 
             //rb.AddRelativeForce(Vector3.up * bounceForce, 0f);
-            rb.AddForce(Vector3.right * speedBoost, 0f);
+           rb.AddForce(Vector3.forward * speedBoost, 0f);
+           
 
-            
+
         }
         playerInSpeedPos = false;
 

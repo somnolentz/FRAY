@@ -35,6 +35,8 @@ public class TwoDWallClimb : MonoBehaviour
     public bool exitingWall;
     public KeyCode jumpKey = KeyCode.Space;
 
+    public Animator anim;
+
 
     // Start is called before the first frame update
     void Start()
@@ -55,7 +57,10 @@ public class TwoDWallClimb : MonoBehaviour
         if (jumpscript.onGround == true)
         {
             climbJumpsLeft = climbJumps;
+            anim.SetBool("wallSlide", false);
         }
+
+       
     }
 
     private void wallCheck()
@@ -81,17 +86,22 @@ public class TwoDWallClimb : MonoBehaviour
             Debug.Log("wallsliding");
             //playercontroller.enabled = false;
             //replace enable and disable with lerp between current velocity desired velocity and back
+            anim.SetBool("wallSlide", true);
 
-          
+
         }
         if (jumpscript.onGround == true)
         {
             //playercontroller.enabled = true;
             onWall = false;
             abletowallslide = false;
+            abletowallslide = false;
+            anim.SetBool("wallSlide", false);
+
+
         }
-        
-        
+
+
     }
 
     private void wallJump()
@@ -104,6 +114,7 @@ public class TwoDWallClimb : MonoBehaviour
             rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
             rb.AddForce(forceToApply, ForceMode.Impulse);
             //climbJumpsLeft--;
+            anim.SetBool("wallSlide", true);
         }
     }
     
