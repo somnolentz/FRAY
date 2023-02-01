@@ -14,9 +14,11 @@ public class SwitchTrigger : MonoBehaviour
     [SerializeField]
     private SpriteDirectionalController sdc;
 
+    private Jump jumpscript;
+
     private void Start()
     {
-       
+        jumpscript = GetComponent<Jump>();
     }
     private void OnTriggerEnter(Collider collider)
     {
@@ -32,9 +34,6 @@ public class SwitchTrigger : MonoBehaviour
             GetComponent<TwoDPlayerCont>().enabled = true;
             GetComponent<TwoDDash>().enabled = true;
             anim.SetBool("is3D", false);
-
-            
-
             GetComponent<WallClimbing>().enabled = false;
             GetComponent<TwoDWallClimb>().enabled = true;
 
@@ -43,6 +42,7 @@ public class SwitchTrigger : MonoBehaviour
         if (collider.tag == "3DTrigger")
         {
             //switchCam();
+
             TwoDTriggerSwitch = false;
             ThreeDTriggerSwitch = true;
             GetComponent<TwoDPlayerCont>().enabled = false;
@@ -52,10 +52,11 @@ public class SwitchTrigger : MonoBehaviour
             GetComponent<Dash>().enabled = true;
             anim.SetBool("is3D", true);
 
-            GetComponent<SpriteDirectionalController>().enabled = true;
-
+            //GetComponent<SpriteDirectionalController>().enabled = true;
             GetComponent<WallClimbing>().enabled = true;
             GetComponent<TwoDWallClimb>().enabled = false;
+
+            jumpscript.onGround = true;
 
         }
      

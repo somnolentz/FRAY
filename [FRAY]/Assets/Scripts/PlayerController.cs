@@ -53,11 +53,11 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (DialogueManager.GetInstance().dialogueIsPlaying)
+       /* if (DialogueManager.GetInstance().dialogueIsPlaying)
         {
             return;
         }
-
+       */
         if (wcscript.exitingWall) return;
 
 
