@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Dave Hub.unity
     guid: d3b136a25e55ba74693b6cb23d4835f9
   - enabled: 1
-    path: Assets/Scenes/LevelOnePlaceholder.unity
+    path: Assets/Scenes/BGtesting.unity
     guid: 2875f94a47d063d4f85282927e87e55c
   m_configObjects: {}
