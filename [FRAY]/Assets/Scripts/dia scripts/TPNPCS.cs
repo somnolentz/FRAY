@@ -22,7 +22,7 @@ public class TPNPCS : MonoBehaviour
         if(firstlevelaccepted == true)
         {
             Debug.Log("tps cutely");
-            SceneManager.LoadScene("LevelOnePlaceholder");
+            SceneManager.LoadScene("BGexperiment");
         }
     }
 }
