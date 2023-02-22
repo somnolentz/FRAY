@@ -1,25 +1,22 @@
-using System.Collections;
+
 using System.Collections.Generic;
 using UnityEngine;
 using Ink.Runtime;
-using System.IO;
+
 
 public class InkyVarManager 
 {
     public Dictionary<string, Ink.Runtime.Object> variables { get; private set; }
 
-    public InkyVarManager(string globalsFilePath)
+    public InkyVarManager(TextAsset loadglobals)
     {
-        //compile
-        string InkFileContents = File.ReadAllText(globalsFilePath);
-        Ink.Compiler compiler = new Ink.Compiler(InkFileContents);
-        Story globalVariablesStory = compiler.Compile();
+        Story gstory = new Story(loadglobals.text);
 
         //initialize dictionary
         variables = new Dictionary<string, Ink.Runtime.Object>();
-        foreach (string name in globalVariablesStory.variablesState)
+        foreach (string name in gstory.variablesState)
         {
-            Ink.Runtime.Object value = globalVariablesStory.variablesState.GetVariableWithName(name);
+            Ink.Runtime.Object value = gstory.variablesState.GetVariableWithName(name);
             variables.Add(name, value);
             Debug.Log("initialized global dialogue variable");
         }

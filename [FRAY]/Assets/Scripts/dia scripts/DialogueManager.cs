@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using Ink.UnityIntegration;
+
 using Ink.Runtime;
 using UnityEngine.EventSystems;
 
@@ -10,7 +10,7 @@ using UnityEngine.EventSystems;
 public class DialogueManager : MonoBehaviour
 {
     [Header("globals ink file")]
-    [SerializeField] private InkFile globalsInkFile;
+    [SerializeField] private TextAsset loadglobals;
 
     [Header("Dialogue UI")]
     [SerializeField] private GameObject dialoguePanel;
@@ -38,7 +38,7 @@ public class DialogueManager : MonoBehaviour
             Debug.LogWarning("Found more than one DM");
         }
         instance = this;
-        dialogueVariables = new InkyVarManager(globalsInkFile.filePath);
+        dialogueVariables = new InkyVarManager(loadglobals);
     }
 
     public static DialogueManager GetInstance()
