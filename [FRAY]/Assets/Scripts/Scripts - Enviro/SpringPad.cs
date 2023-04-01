@@ -5,42 +5,13 @@ using UnityEngine;
 public class SpringPad : MonoBehaviour
 {
     public float bounceForce;
-    
-
-    private Vector3 springFacing;
-
-    public Rigidbody rb;
-
-    [SerializeField]
-    private bool playerInBouncePos = false;
-
-
-
-    // Update is called once per frame
-    void Update()
+    void OnTriggerEnter(Collider other)
     {
-        if (playerInBouncePos == true)
+        if (other.gameObject.CompareTag("Player"))
         {
-
-            //rb.AddRelativeForce(Vector3.up * bounceForce, 0f);
-            rb.AddForce(Vector3.up * bounceForce, 0f);
-
-            playerInBouncePos = false;
+            // Add force to player Rigidbody component to bounce it
+            other.GetComponent<Rigidbody>().AddForce(transform.up * bounceForce, ForceMode.Impulse);
         }
-
-        springFacing = Vector3.forward;
-
-
-
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            playerInBouncePos = true;
-        }
-
     }
 
 
