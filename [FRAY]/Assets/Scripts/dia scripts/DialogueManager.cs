@@ -30,6 +30,19 @@ public class DialogueManager : MonoBehaviour
 
     private InkyVarManager dialogueVariables;
 
+    private List<Choice> activeChoices = new List<Choice>();
+
+    public bool choicesAreDisplaying = false;
+
+    private PlayerController pc;
+    private TwoDPlayerCont tpc;
+    private Jump j;
+    private Dash d;
+    private TwoDDash td;
+    private Animator a;
+
+    public GameObject player;
+
 
     private void Awake()
     {
@@ -48,6 +61,13 @@ public class DialogueManager : MonoBehaviour
 
     private void Start()
     {
+        pc = player.GetComponent<PlayerController>();
+        tpc = player.GetComponent<TwoDPlayerCont>();
+        j = player.GetComponent<Jump>();
+        d = player.GetComponent<Dash>();
+        td = player.GetComponent<TwoDDash>();
+        a = player.GetComponentInChildren<Animator>();
+
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
 
@@ -61,10 +81,27 @@ public class DialogueManager : MonoBehaviour
     }
     private void Update()
     {
-      if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && choicesAreDisplaying == false && dialogueIsPlaying == true || Input.GetMouseButtonDown(0) && choicesAreDisplaying == false && dialogueIsPlaying == true)
         {
             ContinueStory();
         }
+
+       if (dialogueIsPlaying == true)
+       {
+            pc.enabled = false;
+            tpc.enabled = false;
+            j.enabled = false;
+            td.enabled = false;
+            a.SetBool("idle", true);
+       }
+        else
+        {
+            pc.enabled = true;
+            d.enabled = true;
+            j.enabled = true;
+            td.enabled = true;
+        }
+      
     }
 
     public void EnterDialogueMode(TextAsset inkJSON)
@@ -113,6 +150,7 @@ public class DialogueManager : MonoBehaviour
             choices[index].gameObject.SetActive(true);
             choicesText[index].text = choice.text;
             index++;
+            choicesAreDisplaying = true;
         }
         //go through remaining choices the ui supports and make sure theyre hidden
         for  (int i = index; i <choices.Length; i++)
@@ -132,6 +170,9 @@ public class DialogueManager : MonoBehaviour
     public void MakeChoice(int choiceIndex)
     {
         currentStory.ChooseChoiceIndex(choiceIndex);
+        ContinueStory();
+        choicesAreDisplaying = false;
+
     }
 
     public Ink.Runtime.Object GetVariableState(string variableName)
@@ -144,13 +185,5 @@ public class DialogueManager : MonoBehaviour
         }
         return variableValue;
     }
-
-
-
-
-
-
-
-
 
 }
