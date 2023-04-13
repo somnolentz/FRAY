@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
         horizInput = Input.GetAxis("Horizontal");
         vertInput = Input.GetAxis("Vertical");
         anim.SetFloat("speed", Mathf.Abs(horizInput));
+
         //SurfaceAlignment();
         if (rb.velocity.magnitude > ThreeDMaxSpeed)
         {
@@ -61,11 +62,16 @@ public class PlayerController : MonoBehaviour
         if (wcscript.exitingWall) return;
 
 
-        rb.AddForce(new Vector3(1, 0, 0) * speed * horizInput);
-        rb.AddForce(new Vector3(0, 0, 1) * speed * vertInput);
+        anim.SetFloat("speed", Mathf.Abs(horizInput));
 
-        Vector3 movementDirection = new Vector3(horizInput, 0, vertInput);
-        //transform.Translate(movementDirection * speed, Space.World);
+        Vector3 cameraForward = Camera.main.transform.forward;
+        cameraForward.y = 0f;
+        Vector3 cameraRight = Camera.main.transform.right;
+        cameraRight.y = 0f;
+
+        Vector3 movementDirection = cameraForward.normalized * vertInput + cameraRight.normalized * horizInput;
+        rb.AddForce(movementDirection * speed);
+
         if (movementDirection != Vector3.zero)
         {
             anim.SetBool("isIdle", false);
