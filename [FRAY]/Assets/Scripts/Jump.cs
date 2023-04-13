@@ -24,15 +24,16 @@ public class Jump : MonoBehaviour
 
     private void Update()
     {
-       /* if (DialogueManager.GetInstance().dialogueIsPlaying == true)
-        {
-            return;
-        }
-       */
+        /* if (DialogueManager.GetInstance().dialogueIsPlaying == true)
+         {
+             return;
+         }
+        */
 
-        if (Input.GetKeyDown(KeyCode.Space) == true && onGround == true)
+        if (Input.GetKeyDown(KeyCode.Space) == true && onGround == true || Input.GetKeyDown(KeyCode.Space) == true && OtherGlobalVar.isjumpingtracker == true && OtherGlobalVar.timesjumped <= 1)
         {
             Debug.Log("registering spacebar");
+            OtherGlobalVar.timesjumped++;
             onGround = false;
             anim.SetBool("isJumping", true);
             anim.SetBool("OnGround", false);
@@ -47,6 +48,7 @@ public class Jump : MonoBehaviour
     {
         if (collider.tag == "ground")
         {
+            OtherGlobalVar.isjumpingtracker = false;
             onGround = true;
             anim.SetBool("isJumping", false);
             anim.SetBool("OnGround", true);
@@ -58,6 +60,7 @@ public class Jump : MonoBehaviour
         if (collider.tag == "ground")
         {
             onGround = false;
+            OtherGlobalVar.isjumpingtracker = true;
             anim.SetBool("isJumping", true);
 
 
