@@ -6239,7 +6239,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 355152120}
   m_LocalRotation: {x: 0, y: 0, z: 0.01745245, w: 0.99984777}
-  m_LocalPosition: {x: -0.5137843, y: -0.15502283, z: -0.5379441}
+  m_LocalPosition: {x: -0.5723956, y: -0.15704224, z: -0.49487633}
   m_LocalScale: {x: 0.059689548, y: 0.07426153, z: 0.048867345}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8805,7 +8805,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 6.3, z: -22}
+  m_FollowOffset: {x: -2.120705, y: 6.229657, z: -16.76408}
   m_XDamping: 1.2
   m_YDamping: 1.7
   m_ZDamping: 1
@@ -9498,6 +9498,32 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 321952223970365214, guid: b9dda6a34f39d104db0934fd6c8232ab, type: 3}
   m_PrefabInstance: {fileID: 1926989693}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1064704337 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9201941849916829645, guid: b9dda6a34f39d104db0934fd6c8232ab, type: 3}
+  m_PrefabInstance: {fileID: 1926989693}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064704320}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 730ddc6eb355dbe4d8eb77a40c123639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1064704343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064704320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8aa6b856d0975804a976be7c3f196ec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dash: {fileID: 1064704337}
+  maxSpeed: 20
+  rb: {fileID: 1064704330}
 --- !u!1001 &1079132510
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16300,7 +16326,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-9246
+  m_Name: pb_Mesh27198
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

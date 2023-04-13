@@ -41,11 +41,13 @@ public class Dash : MonoBehaviour
     private IEnumerator StartDash()
     {
         canDash = false;
+        OtherGlobalVar.isdashingtracker = true;
         isDashing = true;
         tr.emitting = true;
         rb.AddRelativeForce(Vector3.forward * dashingPower, 0f);
         yield return new WaitForSeconds(dashingTime);
         tr.emitting = false;
+        OtherGlobalVar.isdashingtracker = false;
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
