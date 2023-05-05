@@ -8,6 +8,8 @@ TagManager:
   - 2DTrigger
   - 3DTrigger
   - wall
+  - Checkpoint
+  - HarmfulObject
   layers:
   - Default
   - TransparentFX

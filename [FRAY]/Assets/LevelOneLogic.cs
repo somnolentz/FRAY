@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-
-public class TPNPCS : MonoBehaviour
+public class LevelOneLogic : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -15,14 +14,14 @@ public class TPNPCS : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool firstlevelaccepted = ((Ink.Runtime.BoolValue)DialogueManager
+        bool TPbacktofirstLevel = ((Ink.Runtime.BoolValue)DialogueManager
                .GetInstance()
-               .GetVariableState("firstlevelaccepted")).value;
+               .GetVariableState("TPbacktofirstLevel")).value;
 
-        if(firstlevelaccepted == true)
+        if (TPbacktofirstLevel == true)
         {
             Debug.Log("tps cutely");
-            SceneManager.LoadScene("LevelCopy");
+            SceneManager.LoadScene("seconddavehub");
         }
     }
 }
