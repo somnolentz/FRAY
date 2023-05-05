@@ -45,7 +45,7 @@ public class TempDoubleJumpItem : MonoBehaviour
         if (isCollected == true)
         {
             mr.enabled = false;
-            bx.enabled = false;
+            bx.enabled = false;  
         }
     }
 }

@@ -30,7 +30,7 @@ public class Jump : MonoBehaviour
          }
         */
 
-        if (Input.GetKeyDown(KeyCode.Space) == true && onGround == true || Input.GetKeyDown(KeyCode.Space) == true && OtherGlobalVar.isjumpingtracker == true && OtherGlobalVar.timesjumped <= 1)
+        if (Input.GetKeyDown(KeyCode.Space) == true && onGround == true || Input.GetKeyDown(KeyCode.Space) == true && OtherGlobalVar.isjumpingtracker == true && OtherGlobalVar.timesjumped <= 2)
         {
             Debug.Log("registering spacebar");
             OtherGlobalVar.timesjumped++;
