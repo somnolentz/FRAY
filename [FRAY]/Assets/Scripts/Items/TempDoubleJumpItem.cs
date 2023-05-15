@@ -28,6 +28,7 @@ public class TempDoubleJumpItem : MonoBehaviour
         {
             isCollected = true;
             OtherGlobalVar.isjumpingtracker = true;
+            OtherGlobalVar.doublejumpEnabled = true;
             Invoke("setGlobalJumpingVarToFalse", itemDuration);
 
         }
@@ -35,7 +36,8 @@ public class TempDoubleJumpItem : MonoBehaviour
 
     void setGlobalJumpingVarToFalse()
     {
-        OtherGlobalVar.isjumpingtracker = false;
+        
+        OtherGlobalVar.doublejumpEnabled = false;
         isCollected = false;
         Destroy(gameObject);
     }

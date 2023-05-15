@@ -40,10 +40,10 @@ public class WallClimbing : MonoBehaviour
     public float exitWallTime;
     private float exitWallTimer;
 
-    
+
     private void StateMachine()
     {
-        //climbing 1
+        //climbing
         if (wallFront && Input.GetKey(KeyCode.W) && wallLookAngle < maxWallLookAngle && !exitingWall)
         {
             if (!climbing && climbTimer > 0) StartClimbing();
@@ -51,25 +51,35 @@ public class WallClimbing : MonoBehaviour
             //timer
             if (climbTimer > 0) climbTimer -= Time.deltaTime;
             if (climbTimer < 0) StopClimbing();
+
+            //stick to wall
+            rb.useGravity = false;
+            rb.velocity = Vector3.zero;
         }
-        //2 exiting
+        //detaching from wall
+        else if (climbing && Input.GetKeyUp(KeyCode.W))
+        {
+            StopClimbing();
+            rb.useGravity = true;
+        }
+        //exiting
         else if (exitingWall)
         {
             if (climbing) StopClimbing();
             anim.SetBool("wallSlide", false);
             if (exitWallTimer > 0) exitWallTimer -= Time.deltaTime;
             if (exitWallTimer < 0) exitingWall = false;
-
-
         }
         //none
         else
         {
             if (climbing) StopClimbing();
             anim.SetBool("wallSlide", false);
+            rb.useGravity = true;
         }
         if (wallFront && Input.GetKey(jumpKey) && climbJumpsLeft > 0) ClimbJump();
     }
+
 
     private void Update()
     {

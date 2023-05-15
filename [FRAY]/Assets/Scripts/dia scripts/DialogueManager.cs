@@ -86,21 +86,6 @@ public class DialogueManager : MonoBehaviour
             ContinueStory();
         }
 
-       if (dialogueIsPlaying == true)
-       {
-            pc.enabled = false;
-            tpc.enabled = false;
-            j.enabled = false;
-            td.enabled = false;
-            a.SetBool("idle", true);
-       }
-        else
-        {
-            pc.enabled = true;
-            d.enabled = true;
-            j.enabled = true;
-            td.enabled = true;
-        }
       
     }
 

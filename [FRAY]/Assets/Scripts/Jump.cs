@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Jump : MonoBehaviour
@@ -30,15 +31,29 @@ public class Jump : MonoBehaviour
          }
         */
 
-        if (Input.GetKeyDown(KeyCode.Space) == true && onGround == true || Input.GetKeyDown(KeyCode.Space) == true && OtherGlobalVar.isjumpingtracker == true && OtherGlobalVar.timesjumped <= 2)
+        if (Input.GetKeyDown(KeyCode.Space) == true && onGround == true)
         {
             Debug.Log("registering spacebar");
-            OtherGlobalVar.timesjumped++;
+           // OtherGlobalVar.timesjumped++;
             onGround = false;
             anim.SetBool("isJumping", true);
             anim.SetBool("OnGround", false);
             rb.AddForce(Vector3.up * Jumpforce, ForceMode.VelocityChange);
 
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) == true && OtherGlobalVar.doublejumpEnabled == true && OtherGlobalVar.timesjumped <= 1)
+        {
+            OtherGlobalVar.timesjumped++;
+            onGround = false;
+            anim.SetBool("isJumping", true);
+            anim.SetBool("OnGround", false);
+            rb.AddForce(Vector3.up * Jumpforce, ForceMode.VelocityChange);
+        }
+
+        if (onGround == true)
+        {
+            OtherGlobalVar.timesjumped = 0;
         }
 
     }

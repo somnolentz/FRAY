@@ -1,6 +1,8 @@
 INCLUDE Globals.ink
 
-Good job. Lets go back.
+-> introNPC
 
-~ TPbacktofirstLevel = true
--> DONE
+=== introNPC ===
+Good job. Lets go back. 
+ ~TPbacktofirstLevel= true
+    ->DONE
