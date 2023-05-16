@@ -16,6 +16,17 @@ public class SwitchTrigger : MonoBehaviour
 
     private Jump jumpscript;
 
+    [SerializeField]
+    private float threeDjumpForce;
+    [SerializeField]
+    private float threeDfallSpeed;
+    [SerializeField]
+    private float TwoDJumpForce;
+    [SerializeField]
+    private float TwoDfallSpeed;
+
+
+
     private void Start()
     {
         jumpscript = GetComponent<Jump>();
@@ -25,7 +36,13 @@ public class SwitchTrigger : MonoBehaviour
 
         if (collider.tag == "2DTrigger")
         {
+            OtherGlobalVar.isIn2d = true;
+            OtherGlobalVar.isIn3d = false;
             //switchCam();
+            //jumpscript.Jumpforce = TwoDJumpForce;
+            //jumpscript.Fallmultiplier = TwoDfallSpeed;
+
+            
             TwoDTriggerSwitch = true;
             ThreeDTriggerSwitch = false;
             GetComponent<PlayerController>().enabled = false;
@@ -41,7 +58,13 @@ public class SwitchTrigger : MonoBehaviour
         }
         if (collider.tag == "3DTrigger")
         {
+            OtherGlobalVar.isIn2d = false;
+            OtherGlobalVar.isIn3d = true;
+
             //switchCam();
+            //variables to change 
+            //jumpscript.Jumpforce = threeDjumpForce;
+            //jumpscript.Fallmultiplier = threeDfallSpeed;
 
             TwoDTriggerSwitch = false;
             ThreeDTriggerSwitch = true;

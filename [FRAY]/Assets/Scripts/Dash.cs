@@ -16,7 +16,18 @@ public class Dash : MonoBehaviour
     public float dashingCooldown = 1f;
     public Rigidbody rb;
     public Animator anim;
-    
+
+    [SerializeField]
+    private float dashAcceleration = 10f;
+
+    [SerializeField]
+    private float dashMaxSpeed = 20f;
+
+    [SerializeField]
+    private AnimationCurve dashCurve;
+
+    public Camera UIcam;
+
 
     // Update is called once per frame
     void Update()
@@ -30,32 +41,40 @@ public class Dash : MonoBehaviour
         {
             Debug.Log("dashing?");
             StartCoroutine(StartDash());
-            CreateDust();
+            
         }
         animateDash();
     }
-    void CreateDust()
-    {
-        dashdust.Play();
-    }
+
     private IEnumerator StartDash()
     {
         canDash = false;
         OtherGlobalVar.isdashingtracker = true;
         isDashing = true;
         tr.emitting = true;
-        rb.AddRelativeForce(Vector3.forward * dashingPower, 0f);
-        yield return new WaitForSeconds(dashingTime);
+
+
+        float elapsedTime = 0f;
+        float currentSpeed = dashMaxSpeed; // Start with maximum speed instantly
+
+        while (elapsedTime < dashingTime)
+        {
+            float progress = elapsedTime / dashingTime;
+            float acceleration = 0f; // Set acceleration to zero for instant acceleration
+            EnableUICam();
+            rb.velocity = transform.forward * currentSpeed;
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        DisableUICam();
         tr.emitting = false;
         OtherGlobalVar.isdashingtracker = false;
         isDashing = false;
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
-        
-
-
-
     }
+
 
     private void animateDash()
     {
@@ -70,7 +89,15 @@ public class Dash : MonoBehaviour
         }
     }
 
+    private void EnableUICam()
+    {
+        UIcam.enabled = true;
+    }
 
+    private void DisableUICam()
+    {
+        UIcam.enabled = false;
+    }
 
 
 }

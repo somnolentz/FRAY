@@ -6,28 +6,11 @@ public class TwoDPlayerCont : MonoBehaviour
 {
     private Rigidbody rb;
     public float speed;
-    public float horizInput;
-    public float vertInput;
+    private float horizInput;
+    private bool isFacingRight = true;
 
     public ParticleSystem dust;
-
-
-    [SerializeField]
-    private LayerMask WhatIsGround;
-
-    [SerializeField]
-    private AnimationCurve animCurve;
-
-
-    [SerializeField]
-    private float Time;
-
-    public Transform facing;
-
     public Animator anim;
-
-    public float TwoDMaxSpeed;
-
 
     // Start is called before the first frame update
     void Start()
@@ -39,63 +22,38 @@ public class TwoDPlayerCont : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         horizInput = Input.GetAxis("Horizontal");
         anim.SetFloat("speed", Mathf.Abs(horizInput));
-
-        if (rb.velocity.magnitude > TwoDMaxSpeed)
-        {
-            rb.velocity = Vector3.ClampMagnitude(rb.velocity, TwoDMaxSpeed);
-        }
-        SurfaceAlignment();
-
     }
 
     private void FixedUpdate()
     {
+        // Move the player horizontally
+        rb.velocity = new Vector3(horizInput * speed, rb.velocity.y, 0);
 
-        rb.AddForce(new Vector3(1, 0, 0) * speed * horizInput);
-
-        if (Input.GetAxisRaw("Horizontal") > 0)
+        // Flip the player's sprite and animation based on movement direction
+        if (horizInput > 0 && !isFacingRight)
         {
-            //Debug.Log("facing right");
-            transform.localRotation = Quaternion.Euler(0, 0, 0);
-            anim.SetBool("FacingRight", true);
-            anim.SetBool("FacingLeft", false);
-
-
+            Flip();
         }
-        if (Input.GetAxisRaw("Horizontal") < 0)
+        else if (horizInput < 0 && isFacingRight)
         {
-            //Debug.Log("facing left");
-            transform.localRotation = Quaternion.Euler(0, 180, 0);
-            anim.SetBool("FacingRight", false);
-            anim.SetBool("FacingLeft", true); 
-
-
+            Flip();
         }
-        
+
+        // Set the animation bools for facing direction
+        anim.SetBool("FacingRight", isFacingRight);
+        anim.SetBool("FacingLeft", !isFacingRight);
     }
 
-
-    private void SurfaceAlignment()
-   {
-
-       Ray ray = new Ray(transform.position, -transform.up);
-       RaycastHit info = new RaycastHit();
-       Quaternion RotationRef = Quaternion.Euler(0, 0, 0);
-       if (Physics.Raycast(ray, out info, WhatIsGround))
-       {
-          RotationRef = Quaternion.Lerp(transform.rotation, Quaternion.FromToRotation(Vector3.up, info.normal), animCurve.Evaluate(Time));
-           transform.rotation = Quaternion.Euler(RotationRef.eulerAngles.x, transform.eulerAngles.y, RotationRef.eulerAngles.z);
-        }
+    void Flip()
+    {
+        isFacingRight = !isFacingRight;
+        transform.Rotate(Vector3.up, 180f);
     }
-
 
     void CreateDust()
     {
         dust.Play();
     }
-
-
 }

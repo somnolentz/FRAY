@@ -1,64 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class TwoDDash : MonoBehaviour
 {
-
-    [SerializeField]
-    private TrailRenderer tr;
+    public TrailRenderer tr;
     public Camera UIcam;
     public ParticleSystem dashdust;
-
-    public bool canDash = true;
-    private bool isDashing;
     public float dashingPower = 24f;
     public float dashingTime = 0.2f;
     public float dashingCooldown = 1f;
     public Rigidbody rb;
+    public Animator anim;
 
-    [SerializeField]
-    Animator anim;
-
-
+    private bool canDash = true;
+    private bool isDashing;
 
     private void Start()
     {
         DisableUICam();
-
     }
-    // Update is called once per frame
-    void Update()
-    {
-      
 
+    private void Update()
+    {
         if (Input.GetKey(KeyCode.LeftShift) && canDash)
         {
-            Debug.Log("dashing");
             StartCoroutine(StartDash());
-            CreateDust();
-            
-          
-
         }
         animateDash();
-    }
-    
-    void CreateDust()
-    {
-        dashdust.Play();
-    }
-
-    void EnableUICam()
-    {
-        UIcam.enabled = true;
-    }
-
-    void DisableUICam()
-    {
-        UIcam.enabled = false;
-
     }
 
     private IEnumerator StartDash()
@@ -67,32 +36,30 @@ public class TwoDDash : MonoBehaviour
         isDashing = true;
 
         tr.emitting = true;
-        
         EnableUICam();
-        rb.velocity += transform.right * dashingPower * Time.deltaTime;
-        yield return new WaitForSeconds(dashingTime);
+        rb.AddForce(transform.right * dashingPower, ForceMode.VelocityChange);
+        yield return new WaitForSecondsRealtime(dashingTime);
         anim.SetBool("isDashing", false);
         tr.emitting = false;
         DisableUICam();
         isDashing = false;
-        yield return new WaitForSeconds(dashingCooldown);
+        yield return new WaitForSecondsRealtime(dashingCooldown);
         canDash = true;
-
-
-
     }
 
     private void animateDash()
     {
-        if (isDashing == true)
-        {
-            anim.SetBool("isDashing", true);
-        }
-
-        if (isDashing == false)
-        {
-            anim.SetBool("isDashing", false);
-        }
+        anim.SetBool("isDashing", isDashing);
     }
 
+    private void EnableUICam()
+    {
+        UIcam.enabled = true;
+    }
+
+    private void DisableUICam()
+    {
+        UIcam.enabled = false;
+    }
 }
+
