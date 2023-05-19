@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/LevelCopy.unity
     guid: 94018932a90938a47a89112663acc109
   - enabled: 0
-    path: Assets/BGexperiment.unity
+    path: Assets/Scenes/BGexperiment.unity
     guid: ae3218576a608da4296d7015f361960f
   m_configObjects: {}

@@ -29,9 +29,13 @@ public class PlayerController : MonoBehaviour
 
     public float ThreeDMaxSpeed;
 
+
+    
+
     // Start is called before the first frame update
     void Start()
     {
+
         
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.None;
@@ -83,7 +87,6 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetBool("isIdle", false);
             transform.forward = movementDirection;
-
         }
         else
         {
@@ -113,6 +116,11 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("FacingFacing", false);
             anim.SetBool("FacingLeft", true);
         }
+
+        // Apply default Unity gravity
+        rb.AddForce(Physics.gravity * rb.mass);
     }
+
+
 
 }

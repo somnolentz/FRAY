@@ -19476,7 +19476,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1163494818}
-  m_LocalRotation: {x: 0.07088901, y: -0.000000018227158, z: 0.0000000012953639, w: 0.9974842}
+  m_LocalRotation: {x: 0.07088901, y: -0.000000018227157, z: 0.0000000012953638, w: 0.9974842}
   m_LocalPosition: {x: 2.7765503, y: -2.1586347, z: 62.885498}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -20283,7 +20283,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh120794
+  m_Name: pb_Mesh38076
   serializedVersion: 10
   m_SubMeshes: []
   m_Shapes:
@@ -20590,11 +20590,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 321952223970365202, guid: b9dda6a34f39d104db0934fd6c8232ab, type: 3}
       propertyPath: m_Drag
-      value: 0.9
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 321952223970365202, guid: b9dda6a34f39d104db0934fd6c8232ab, type: 3}
+      propertyPath: m_Mass
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 321952223970365202, guid: b9dda6a34f39d104db0934fd6c8232ab, type: 3}
       propertyPath: m_AngularDrag
-      value: 0.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 321952223970365209, guid: b9dda6a34f39d104db0934fd6c8232ab, type: 3}
       propertyPath: anim
@@ -20613,8 +20617,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 321952223970365209, guid: b9dda6a34f39d104db0934fd6c8232ab, type: 3}
+      propertyPath: slideSpeed
+      value: 49
+      objectReference: {fileID: 0}
+    - target: {fileID: 321952223970365209, guid: b9dda6a34f39d104db0934fd6c8232ab, type: 3}
       propertyPath: ThreeDMaxSpeed
-      value: 30
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 321952223970365209, guid: b9dda6a34f39d104db0934fd6c8232ab, type: 3}
+      propertyPath: slopeAngleThreshold
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 321952223970365212, guid: b9dda6a34f39d104db0934fd6c8232ab, type: 3}
       propertyPath: m_Enabled
@@ -20764,6 +20776,10 @@ PrefabInstance:
       propertyPath: anim
       value: 
       objectReference: {fileID: 1444850522}
+    - target: {fileID: 9201941849916829645, guid: b9dda6a34f39d104db0934fd6c8232ab, type: 3}
+      propertyPath: UIcam
+      value: 
+      objectReference: {fileID: 712692280}
     - target: {fileID: 9201941849916829645, guid: b9dda6a34f39d104db0934fd6c8232ab, type: 3}
       propertyPath: dashdust
       value: 
@@ -20974,6 +20990,36 @@ MonoBehaviour:
   mainTransform: {fileID: 328302844}
   animator: {fileID: 1444850522}
   spriteRenderer: {fileID: 1444850532}
+--- !u!114 &1444850554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444850525}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45d8260fc4f86f94395bbac3fb294a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slideSpeed: 5
+  slideDuration: 10
+  slopeAngleThreshold: 1
+  slopeCollider: {fileID: 1444850555}
+  slideInputAxis: Slide
+--- !u!65 &1444850555
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444850525}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0433197, y: 0.13995428, z: 0.8456421}
+  m_Center: {x: 0.021659851, y: -0.93002355, z: 0.077178955}
 --- !u!1 &1495325862
 GameObject:
   m_ObjectHideFlags: 0

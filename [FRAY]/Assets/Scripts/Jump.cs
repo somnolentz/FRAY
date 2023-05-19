@@ -74,16 +74,17 @@ public class Jump : MonoBehaviour
             Debug.Log("Is on the ground");
         }
     }
-
     private void FixedUpdate()
     {
         if (rb.velocity.y < 0)
         {
-            rb.velocity += Vector3.up * Physics.gravity.y * fallMultiplier * Time.deltaTime;
+            rb.velocity += Vector3.up * (Physics.gravity.y * (fallMultiplier - 1) + Physics.gravity.y) * Time.fixedDeltaTime;
         }
         else if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
         {
-            rb.velocity += Vector3.up * Physics.gravity.y * lowJumpMultiplier * Time.deltaTime;
+            rb.velocity += Vector3.up * (Physics.gravity.y * (lowJumpMultiplier - 1) + Physics.gravity.y) * Time.fixedDeltaTime;
         }
     }
+
+
 }
