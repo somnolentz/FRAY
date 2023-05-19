@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Jump : MonoBehaviour
@@ -9,7 +8,6 @@ public class Jump : MonoBehaviour
     public float TwoModeJumpForce;
     public float TwoModeFall;
 
-    
     public float jumpForce = 7.0f;
     public float fallMultiplier = 2.0f;
     public float lowJumpMultiplier = 1.5f;
@@ -23,22 +21,24 @@ public class Jump : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        
+
         onGround = true;
         timesJumped = 0;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && onGround)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            JumpAction();
-        }
-        if (Input.GetKeyDown(KeyCode.Space) == true && OtherGlobalVar.doublejumpEnabled == true && OtherGlobalVar.timesjumped <= 1)
-        {
-            OtherGlobalVar.timesjumped++;
-            JumpAction();
-           
+            if (onGround)
+            {
+                JumpAction();
+            }
+            else if (OtherGlobalVar.doublejumpEnabled && timesJumped < 1)
+            {
+                timesJumped++;
+                JumpAction();
+            }
         }
 
         if (OtherGlobalVar.isIn2d)
@@ -46,7 +46,7 @@ public class Jump : MonoBehaviour
             jumpForce = TwoModeJumpForce;
             fallMultiplier = TwoModeFall;
         }
-        if (OtherGlobalVar.isIn3d)
+        else if (OtherGlobalVar.isIn3d)
         {
             jumpForce = ThreeModeJumpForce;
             fallMultiplier = ThreeModeFall;
