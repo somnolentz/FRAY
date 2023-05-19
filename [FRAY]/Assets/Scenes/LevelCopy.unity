@@ -57815,7 +57815,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b4118b9a4314f5940ab0dbe7342b4146, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b4118b9a4314f5940ab0dbe7342b4146, type: 3}
       propertyPath: m_LocalScale.x
@@ -101010,6 +101010,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1064704322, guid: b9dda6a34f39d104db0934fd6c8232ab, type: 3}
+      propertyPath: climbSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1064704322, guid: b9dda6a34f39d104db0934fd6c8232ab, type: 3}
+      propertyPath: climbJumpUpForce
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 321952223970365201, guid: b9dda6a34f39d104db0934fd6c8232ab, type: 3}
       propertyPath: m_Name
       value: player
@@ -101048,7 +101056,7 @@ PrefabInstance:
       objectReference: {fileID: 1087917428}
     - target: {fileID: 321952223970365209, guid: b9dda6a34f39d104db0934fd6c8232ab, type: 3}
       propertyPath: speed
-      value: 13
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 321952223970365209, guid: b9dda6a34f39d104db0934fd6c8232ab, type: 3}
       propertyPath: wcscript
@@ -101287,13 +101295,25 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9201941849916829644, guid: b9dda6a34f39d104db0934fd6c8232ab, type: 3}
+      propertyPath: ThreeModeFall
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9201941849916829644, guid: b9dda6a34f39d104db0934fd6c8232ab, type: 3}
       propertyPath: Fallmultiplier
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9201941849916829644, guid: b9dda6a34f39d104db0934fd6c8232ab, type: 3}
+      propertyPath: ThreeModeJumpForce
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 9201941849916829645, guid: b9dda6a34f39d104db0934fd6c8232ab, type: 3}
       propertyPath: anim
       value: 
       objectReference: {fileID: 1087917428}
+    - target: {fileID: 9201941849916829645, guid: b9dda6a34f39d104db0934fd6c8232ab, type: 3}
+      propertyPath: UIcam
+      value: 
+      objectReference: {fileID: 1940682035}
     - target: {fileID: 9201941849916829645, guid: b9dda6a34f39d104db0934fd6c8232ab, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -101356,7 +101376,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9201941849916829651, guid: b9dda6a34f39d104db0934fd6c8232ab, type: 3}
       propertyPath: dashingPower
-      value: 2000
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 9201941849916829662, guid: b9dda6a34f39d104db0934fd6c8232ab, type: 3}
       propertyPath: sdc

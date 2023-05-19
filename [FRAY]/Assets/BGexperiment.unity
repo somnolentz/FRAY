@@ -18299,6 +18299,10 @@ PrefabInstance:
       propertyPath: UIcam
       value: 
       objectReference: {fileID: 1940682035}
+    - target: {fileID: 9201941849916829651, guid: b9dda6a34f39d104db0934fd6c8232ab, type: 3}
+      propertyPath: dashingPower
+      value: 160
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9dda6a34f39d104db0934fd6c8232ab, type: 3}
 --- !u!1 &1940682033

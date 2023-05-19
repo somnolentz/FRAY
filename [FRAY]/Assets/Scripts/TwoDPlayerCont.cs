@@ -12,11 +12,14 @@ public class TwoDPlayerCont : MonoBehaviour
     public ParticleSystem dust;
     public Animator anim;
 
+    private bool isJumping = false;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationX;
+
     }
 
     // Update is called once per frame
@@ -24,6 +27,12 @@ public class TwoDPlayerCont : MonoBehaviour
     {
         horizInput = Input.GetAxis("Horizontal");
         anim.SetFloat("speed", Mathf.Abs(horizInput));
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            isJumping = true;
+            anim.SetBool("isJumping", true);
+        }
     }
 
     private void FixedUpdate()
@@ -44,6 +53,12 @@ public class TwoDPlayerCont : MonoBehaviour
         // Set the animation bools for facing direction
         anim.SetBool("FacingRight", isFacingRight);
         anim.SetBool("FacingLeft", !isFacingRight);
+
+        if (isJumping && rb.velocity.y <= 0)
+        {
+            isJumping = false;
+            anim.SetBool("isJumping", false);
+        }
     }
 
     void Flip()
