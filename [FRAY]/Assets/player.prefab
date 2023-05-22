@@ -22,6 +22,10 @@ GameObject:
   - component: {fileID: 9201941849916829662}
   - component: {fileID: 1064704321}
   - component: {fileID: 1064704322}
+  - component: {fileID: 2843647034142830683}
+  - component: {fileID: 1424053204165058402}
+  - component: {fileID: 1064704335}
+  - component: {fileID: 1064704339}
   m_Layer: 8
   m_Name: player
   m_TagString: Player
@@ -121,13 +125,13 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 321952223970365201}
   serializedVersion: 2
-  m_Mass: 0.4
+  m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!114 &321952223970365209
 MonoBehaviour:
@@ -141,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d710d8eee9b995c40bb194e47228cb66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 50
+  speed: 30
   dust: {fileID: 0}
   WhatIsGround:
     serializedVersion: 2
@@ -150,29 +154,29 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
+      time: 0.014160156
+      value: 1.008255
+      inSlope: -0.008373576
+      outSlope: -0.008373576
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
+      inSlope: -0.008373576
+      outSlope: -0.008373576
+      tangentMode: 34
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.33333334
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   Time: 0.45
   switchtoTwoDMode: 0
-  wcscript: {fileID: 1064704322}
+  wcscript: {fileID: 1424053204165058402}
   anim: {fileID: 9201941849785692023}
   ThreeDMaxSpeed: 30
 --- !u!96 &9201941849916829647
@@ -342,8 +346,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e0cf4f8ffbe394aa21e5626b14fe18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThreeModeJumpForce: 50
-  ThreeModeFall: 12
+  ThreeModeJumpForce: 21
+  ThreeModeFall: 8
   TwoModeJumpForce: 13
   TwoModeFall: 3
   jumpForce: 11
@@ -363,7 +367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ab9bef5e1b5a4a4cbaf43b9cc7cdca5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 14
+  speed: 23
   dust: {fileID: 0}
   anim: {fileID: 9201941849785692023}
 --- !u!114 &9201941849916829651
@@ -381,8 +385,8 @@ MonoBehaviour:
   tr: {fileID: 9201941849916829647}
   UIcam: {fileID: 0}
   dashdust: {fileID: 0}
-  dashingPower: 300
-  dashingTime: 0.7
+  dashingPower: 600
+  dashingTime: 1
   dashingCooldown: 1
   rb: {fileID: 321952223970365202}
   anim: {fileID: 9201941849785692023}
@@ -456,9 +460,9 @@ MonoBehaviour:
     m_Bits: 64
   jmp: {fileID: 9201941849916829644}
   anim: {fileID: 9201941849785692023}
-  climbSpeed: 10
+  climbSpeed: 20
   maxClimbTIme: 1
-  climbJumpUpForce: 1.19
+  climbJumpUpForce: 4
   climbJumpBackForce: 2
   jumpKey: 32
   climbJumps: 2
@@ -468,6 +472,99 @@ MonoBehaviour:
   minWalNormalAngleChange: 5
   exitingWall: 0
   exitWallTime: 0.2
+--- !u!114 &2843647034142830683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321952223970365201}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ede0464db5d1048ad12b1ddf48acf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slidingSpeed: 0
+  slidingTime: 0
+  abletowallslide: 0
+  iswallsliding: 0
+  wallDetectionRadius: 0.2
+  wallDetectionLength: 0.4
+  whatIsWall:
+    serializedVersion: 2
+    m_Bits: 64
+  onWall: 0
+  wallSlowDown: 0
+  playercontroller: {fileID: 9201941849916829648}
+  climbJumpUpForce: 1.5
+  climbJumpBackForce: 2
+  climbJumpsLeft: 5
+  climbJumps: 4
+  exitingWall: 0
+  jumpKey: 32
+  anim: {fileID: 9201941849785692023}
+--- !u!114 &1424053204165058402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321952223970365201}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6a7ee3779adac94aabd0e0fd7930ad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orientation: {fileID: 321952223970365214}
+  rb: {fileID: 321952223970365202}
+  whatIsWall:
+    serializedVersion: 2
+    m_Bits: 64
+  jmp: {fileID: 9201941849916829644}
+  anim: {fileID: 9201941849785692023}
+  climbSpeed: 9
+  maxClimbTIme: 1
+  climbJumpUpForce: 6
+  climbJumpBackForce: 5
+  jumpKey: 32
+  climbJumps: 2
+  detectionLength: 1
+  sphereCastRadius: 0.9
+  maxWallLookAngle: 360
+  minWalNormalAngleChange: 1
+  exitingWall: 0
+  exitWallTime: 0.2
+--- !u!114 &1064704335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321952223970365201}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8aa6b856d0975804a976be7c3f196ec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dash: {fileID: 9201941849916829645}
+  maxSpeed: 30
+  rb: {fileID: 321952223970365202}
+--- !u!114 &1064704339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321952223970365201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33df9a1d002c25b45acc455e3468aa15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 321952223970365201}
+  checkpoints:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &321952224451766584
 GameObject:
   m_ObjectHideFlags: 0
@@ -610,6 +707,7 @@ GameObject:
   - component: {fileID: 9201941849785692020}
   - component: {fileID: 9201941849785692023}
   - component: {fileID: 1087917429}
+  - component: {fileID: 984041578801054364}
   m_Layer: 8
   m_Name: GFX
   m_TagString: Untagged
@@ -735,6 +833,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1087917429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9201941849785692009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e382a0928ae02b545b99be2f0c9a5c01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &984041578801054364
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

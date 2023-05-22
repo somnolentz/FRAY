@@ -34,7 +34,7 @@ public class Jump : MonoBehaviour
             {
                 JumpAction();
             }
-            else if (OtherGlobalVar.doublejumpEnabled && timesJumped < 1)
+            else if (OtherGlobalVar.doublejumpEnabled && timesJumped <= 2)
             {
                 timesJumped++;
                 JumpAction();
@@ -78,14 +78,13 @@ public class Jump : MonoBehaviour
     {
         if (rb.velocity.y < 0)
         {
-            rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
+            rb.velocity += Vector3.up * (Physics.gravity.y * (fallMultiplier - 1) + Physics.gravity.y) * Time.fixedDeltaTime;
         }
         else if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
         {
-            rb.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.fixedDeltaTime;
+            rb.velocity += Vector3.up * (Physics.gravity.y * (lowJumpMultiplier - 1) + Physics.gravity.y) * Time.fixedDeltaTime;
         }
     }
-
 
 
 }

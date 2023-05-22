@@ -117,10 +117,6 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("FacingLeft", true);
         }
 
-        // Apply default Unity gravity
-        rb.AddForce(Physics.gravity * rb.mass);
+        
     }
-
-
-
 }
