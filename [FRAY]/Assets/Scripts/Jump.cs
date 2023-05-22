@@ -78,13 +78,14 @@ public class Jump : MonoBehaviour
     {
         if (rb.velocity.y < 0)
         {
-            rb.velocity += Vector3.up * (Physics.gravity.y * (fallMultiplier - 1) + Physics.gravity.y) * Time.fixedDeltaTime;
+            rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
         }
         else if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
         {
-            rb.velocity += Vector3.up * (Physics.gravity.y * (lowJumpMultiplier - 1) + Physics.gravity.y) * Time.fixedDeltaTime;
+            rb.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.fixedDeltaTime;
         }
     }
+
 
 
 }
