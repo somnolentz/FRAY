@@ -7596,7 +7596,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh29002
+  m_Name: pb_Mesh37532
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8769,6 +8769,7 @@ MonoBehaviour:
   climbJumps: 5
   exitingWall: 0
   jumpKey: 32
+  anim: {fileID: 0}
 --- !u!1 &975344430
 GameObject:
   m_ObjectHideFlags: 0
@@ -10001,7 +10002,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1415834961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10671,7 +10672,7 @@ PrefabInstance:
       objectReference: {fileID: 797244483}
     - target: {fileID: 321952223970365209, guid: b9dda6a34f39d104db0934fd6c8232ab, type: 3}
       propertyPath: speed
-      value: 23
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 321952223970365209, guid: b9dda6a34f39d104db0934fd6c8232ab, type: 3}
       propertyPath: wcscript
@@ -10814,13 +10815,25 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9201941849916829644, guid: b9dda6a34f39d104db0934fd6c8232ab, type: 3}
+      propertyPath: ThreeModeFall
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9201941849916829644, guid: b9dda6a34f39d104db0934fd6c8232ab, type: 3}
       propertyPath: Fallmultiplier
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9201941849916829644, guid: b9dda6a34f39d104db0934fd6c8232ab, type: 3}
+      propertyPath: ThreeModeJumpForce
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 9201941849916829645, guid: b9dda6a34f39d104db0934fd6c8232ab, type: 3}
       propertyPath: anim
       value: 
       objectReference: {fileID: 797244483}
+    - target: {fileID: 9201941849916829645, guid: b9dda6a34f39d104db0934fd6c8232ab, type: 3}
+      propertyPath: UIcam
+      value: 
+      objectReference: {fileID: 1823959741}
     - target: {fileID: 9201941849916829647, guid: b9dda6a34f39d104db0934fd6c8232ab, type: 3}
       propertyPath: m_Emitting
       value: 0
@@ -10879,7 +10892,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9201941849916829651, guid: b9dda6a34f39d104db0934fd6c8232ab, type: 3}
       propertyPath: dashingPower
-      value: 2000
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 9201941849916829662, guid: b9dda6a34f39d104db0934fd6c8232ab, type: 3}
       propertyPath: sdc
